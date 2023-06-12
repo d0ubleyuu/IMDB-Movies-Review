@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IMDB Review Sentiment</title>
+    <link href="../static/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="bg-load" class="bg-load">
+      <div class="load">
+        <hr/><hr/><hr/><hr/>
+      </div>
+    </div>
+    <div class="flex w-full bg-[#121212] px-12 py-4">
+      <h2 class="basis-11/12 text-lg font-bold text-[#f5c518]">
+        Imdb Review Sentiment
+      </h2>
+      <div class="basis-1/12">
+        <a
+          href="about.html"
+          class="text-xs py-2 px-10 leading-none border rounded-full text-amber-400 border-[#f5c518] hover:border-transparent hover:text-white hover:bg-amber-400 mt-4 lg:mt-0"
+          >About</a
+        >
+      </div>
+    </div>
+    <div class="flex justify-center items-center flex-col py-16">
+      <h1
+        class="text-[#121212] text-center mb-10 text-5xl font-extrabold leading-none tracking-tight"
+      >
+        Sentiment Analysis
+        <mark class="px-2 bg-[#f5c518] rounded">IMDB</mark>
+        User Review
+      </h1>
+      <div
+        class="h-80 px-7 w-[700px] rounded-[12px] bg-white p-4 shadow-md border"
+      >
+        <p
+          class="text-xl font-bold text-[#121212] cursor-pointer transition-all hover:text-black"
+        >
+          Add Commentar
+        </p>
+        <form id="myForm" action="{{ url_for('predict')}}" method="POST" align="center">
+          <textarea
+            name="message"
+            class="h-40 px-3 hover:border-[#f5c518] hover:shadow-md text-sm py-1 mt-5 outline-none border-gray-300 w-full resize-none border rounded-lg placeholder:text-sm"
+            placeholder="Add your review movies here"
+          ></textarea>
+
+          <div class="flex justify-end mt-2">
+            <button
+              value="Check this out"
+              type="button"
+              onclick="handleClick()"
+              class="h-12 w-[150px] bg-[#f5c518] font-bold text-sm text-[#121212] hover:text-oren rounded-lg transition-all cursor-pointer hover:bg-[#d1a813]"
+            >
+              Sentiment Analysis
+            </button>
+        </form>
+        </div>
+      </div>
+    </div>
+    <footer
+      class="fixed bottom-0 left-0 -z-20 w-full bg-[#121212] rounded-t-lg shadow"
+    >
+      <span
+        class="py-6 block text-sm text-[#f5c518] text-center dark:text-gray-400"
+      >
+        © 2023 <a href="" class="hover:underline">NLP</a>.
+        <p class="text-[12px] italic text-[#f5c518]">
+          • Wahyu 2103113577 • Najmi Fadhila Atsari 2103110233 • Natania Adela
+          Surya Anggraeni 2103112020.
+        </p></span
+      >
+    </footer>
+  </body>
+  <script>
+    function handleClick() {
+      var form = document.getElementById('myForm');
+      var loadingIndicator = document.getElementById('bg-load');
+      
+      loadingIndicator.style.display = 'block';
+
+      setTimeout(function() {
+        form.submit();
+      }, 500);
+    }
+  </script>
+</html>
